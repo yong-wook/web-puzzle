@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바닐라 JS 테트리스</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-menu" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f0f0f0;">
+        <h1>바닐라 JS 테트리스</h1>
+        <button id="start-button">게임 시작</button>
+    </div>
+    <div id="game-container" style="display: none;">
+        <div id="showtime-overlay">
+            <div id="showtime-text">SHOWTIME!</div>
+        </div>
+        <div id="hold-piece-container">
+            <h3>홀드</h3>
+            <canvas id="hold-piece-board" width="200" height="200"></canvas>
+        </div>
+        <canvas id="game-board" width="400" height="800"></canvas>
+        <div id="right-panel">
+            <div id="next-piece-container">
+                <h3>다음 블록</h3>
+                <canvas id="next-piece-board" width="200" height="200"></canvas>
+            </div>
+            <div id="showtime-controls-info" style="display: none;">
+            <p>스페이스: 확대/축소</p>
+            <p>화살표 키: 이동</p>
+            <p>엔터: 다음으로</p>
+        </div>
+            <div id="game-info">
+                <div id="stage-display">스테이지: 1-1</div>
+                <div id="timer-display">시간: 00:00</div>
+                <div id="score">점수: 0</div>
+                <div id="controls-info" style="margin-top: 10px; font-size: 0.9em; color: #555;">P 키를 눌러 일시정지/재개</div>
+            </div>
+        </div>
+    <div id="pause-message" style="display: none; color: red; font-weight: bold;">PAUSED</div>
+    
+            <div id="game-over-screen" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <p>게임 오버!</p>
+                <p id="final-score"></p>
+            </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="gameplay.js"></script>
+    <script src="showtime.js"></script>
+</body>
+</html>
