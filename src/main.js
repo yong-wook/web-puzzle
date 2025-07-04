@@ -2,7 +2,11 @@
 
 // 다른 모듈에서 필요한 함수와 변수를 가져옵니다. (해당 파일들도 수정 예정)
 // 'gameplay.js'는 게임의 핵심 로직(조각 이동, 줄 삭제, 게임 루프)을 담당합니다.
-import { initGameplay, addKeydownListener, startGameLoop, stopGameLoop, setStageClearCallback, resetGameState, resumeGame } from './gameplay/gameplay.js';
+import { 
+    initGameplay, addKeydownListener, startGameLoop, stopGameLoop, 
+    setStageClearCallback, resetGameState, resumeGame,
+    movePieceLeft, movePieceRight, movePieceDown, rotatePiece, hardDropPiece, holdPiece
+} from './gameplay/gameplay.js';
 // 'stage.js'는 스테이지 데이터와 로드 로직을 담당합니다.
 import { loadStage } from './stage/stage.js';
 import { initShowtime, startShowtime } from './showtime/showtime.js';
@@ -71,6 +75,18 @@ async function setupStageSelection() {
 }
 
 /**
+ * 터치 컨트롤러 버튼에 이벤트 리스너를 설정합니다.
+ */
+function setupTouchControls() {
+    document.getElementById('ctrl-left').addEventListener('click', movePieceLeft);
+    document.getElementById('ctrl-right').addEventListener('click', movePieceRight);
+    document.getElementById('ctrl-down').addEventListener('click', movePieceDown);
+    document.getElementById('ctrl-rotate').addEventListener('click', rotatePiece);
+    document.getElementById('ctrl-drop').addEventListener('click', hardDropPiece);
+    document.getElementById('ctrl-hold').addEventListener('click', holdPiece);
+}
+
+/**
  * 게임을 시작하는 함수
  */
 function startGame() {
@@ -125,6 +141,7 @@ window.onload = () => {
     initGameplay(); // 게임 플레이 관련 DOM 요소를 먼저 초기화합니다.
     initShowtime(); // 쇼타임 관련 DOM 요소를 초기화합니다.
     setupStageSelection();
+    setupTouchControls(); // 터치 컨트롤러를 설정합니다.
 };
 
 // 전역 스코프에 필요한 변수나 함수를 노출시켜야 할 경우,

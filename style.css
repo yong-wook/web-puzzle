@@ -278,3 +278,116 @@ h1 {
     justify-content: center;
     align-items: flex-start;
 }
+
+/* --- 모바일 터치 컨트롤러 스타일 --- */
+
+#mobile-controls {
+    display: none; /* 기본적으로는 숨김 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent; /* iOS에서 탭 하이라이트 제거 */
+    user-select: none; /* 롱클릭 시 텍스트 선택 방지 */
+}
+
+/* 터치스크린이거나 화면이 좁을 때만 컨트롤러를 표시 */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+.mobile-controls-group {
+    display: flex;
+    gap: 15px;
+}
+
+.mobile-controls-group:nth-child(2) {
+    flex-direction: column;
+    align-items: center;
+}
+
+.mobile-controls-group:nth-child(3) {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.ctrl-btn {
+    width: 65px;
+    height: 65px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctrl-btn:active {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#ctrl-hold, #ctrl-drop {
+    font-size: 1em;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+/* --- 쇼타임 전용 모바일 컨트롤러 --- */
+#showtime-mobile-controls {
+    display: none; /* 기본적으로 숨김 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 17; /* 쇼타임 텍스트보다 위에 위치 */
+    justify-content: space-between;
+    align-items: flex-end;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* 쇼타임 중이고, 터치스크린/모바일일 때만 표시 */
+#showtime-overlay[style*="display: flex"] #showtime-mobile-controls {
+    @media (hover: none), (pointer: coarse), (max-width: 768px) {
+        display: flex;
+    }
+}
+
+.showtime-ctrl-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 1.5em;
+    border-radius: 50%;
+}
+
+.showtime-ctrl-btn:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.showtime-dpad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.showtime-dpad > div {
+    display: flex;
+    gap: 50px;
+}

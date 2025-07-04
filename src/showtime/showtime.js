@@ -18,80 +18,69 @@ function updateBackground() {
     gameBackground.style.transform = `${translate} ${scale}`;
 }
 
-function handleShowtimeKeys(event) {
-    const handledKeys = [13, 32, 37, 38, 39, 40];
-    if (!handledKeys.includes(event.keyCode)) {
-        return; // 우리가 처리하지 않는 키는 무시
-    }
+// --- Action Functions ---
+function toggleZoom() {
+    backgroundZoom = backgroundZoom === 1 ? 2 : 1;
+    updateBackground();
+}
 
-    event.preventDefault(); // 처리할 키에 대해서는 기본 동작을 항상 막음
+function panBackground(dx, dy) {
+    if (backgroundZoom <= 1) return;
+    const moveAmount = 10;
+    const containerWidth = gameBackground.offsetWidth;
+    const containerHeight = gameBackground.offsetHeight;
+    const maxPanX = (containerWidth * backgroundZoom - containerWidth) / 2;
+    const maxPanY = (containerHeight * backgroundZoom - containerHeight) / 2;
 
-    let needsUpdate = false;
+    backgroundPosX = Math.max(-maxPanX, Math.min(maxPanX, backgroundPosX + dx * moveAmount));
+    backgroundPosY = Math.max(-maxPanY, Math.min(maxPanY, backgroundPosY + dy * moveAmount));
+    updateBackground();
+}
 
-    // 줌 인/아웃
-    if (event.keyCode === 32) { // Space
-        backgroundZoom = backgroundZoom === 1 ? 2 : 1;
-        needsUpdate = true;
-    }
-
-    // 다음 스테이지로 진행
-    if (event.keyCode === 13) { // Enter
-        document.removeEventListener('keydown', handleShowtimeKeys);
-        showtimeOverlay.style.display = 'none';
-        gameBackground.classList.remove('showtime');
-        
-        backgroundZoom = 1;
-        backgroundPosX = 0;
-        backgroundPosY = 0;
-        updateBackground();
-        
-        if (onShowtimeCompleteCallback) {
-            onShowtimeCompleteCallback();
-        }
-        return;
-    }
-
-    // 확대된 상태에서만 화살표 키 작동
-    if (backgroundZoom > 1) {
-        const moveAmount = 10; // 이동량 (px)
-
-        // 확대된 이미지가 컨테이너 밖으로 나가지 않도록 경계를 계산합니다.
-        const containerWidth = gameBackground.offsetWidth;
-        const containerHeight = gameBackground.offsetHeight;
-        const maxPanX = (containerWidth * backgroundZoom - containerWidth) / 2;
-        const maxPanY = (containerHeight * backgroundZoom - containerHeight) / 2;
-
-        switch (event.keyCode) {
-            case 37: // Left
-                backgroundPosX = Math.max(-maxPanX, backgroundPosX - moveAmount);
-                needsUpdate = true;
-                break;
-            case 38: // Up
-                backgroundPosY = Math.max(-maxPanY, backgroundPosY - moveAmount);
-                needsUpdate = true;
-                break;
-            case 39: // Right
-                backgroundPosX = Math.min(maxPanX, backgroundPosX + moveAmount);
-                needsUpdate = true;
-                break;
-            case 40: // Down
-                backgroundPosY = Math.min(maxPanY, backgroundPosY + moveAmount);
-                needsUpdate = true;
-                break;
-        }
-    }
-
-    if (needsUpdate) {
-        updateBackground();
+function proceedToNext() {
+    document.removeEventListener('keydown', handleShowtimeKeys);
+    showtimeOverlay.style.display = 'none';
+    
+    backgroundZoom = 1;
+    backgroundPosX = 0;
+    backgroundPosY = 0;
+    updateBackground();
+    
+    if (onShowtimeCompleteCallback) {
+        onShowtimeCompleteCallback();
     }
 }
 
+function handleShowtimeKeys(event) {
+    const handledKeys = [13, 32, 37, 38, 39, 40];
+    if (!handledKeys.includes(event.keyCode)) {
+        return; 
+    }
+    event.preventDefault();
+
+    switch (event.keyCode) {
+        case 32: toggleZoom(); break; // Space
+        case 13: proceedToNext(); break; // Enter
+        case 37: panBackground(-1, 0); break; // Left
+        case 38: panBackground(0, -1); break; // Up
+        case 39: panBackground(1, 0); break; // Right
+        case 40: panBackground(0, 1); break; // Down
+    }
+}
 
 export function initShowtime() {
     showtimeOverlay = document.getElementById('showtime-overlay');
     showtimeText = document.getElementById('showtime-text');
     showtimeControlsInfo = document.getElementById('showtime-controls-info');
     gameBackground = document.getElementById('game-background');
+
+    // --- Touch Controls Setup ---
+    document.getElementById('showtime-ctrl-zoom').addEventListener('click', toggleZoom);
+    document.getElementById('showtime-ctrl-next').addEventListener('click', proceedToNext);
+    document.getElementById('showtime-ctrl-up').addEventListener('click', () => panBackground(0, -1));
+    document.getElementById('showtime-ctrl-down').addEventListener('click', () => panBackground(0, 1));
+    document.getElementById('showtime-ctrl-left').addEventListener('click', () => panBackground(-1, 0));
+    document.getElementById('showtime-ctrl-right').addEventListener('click', () => panBackground(1, 0));
 }
 
 export function startShowtime(onComplete) {

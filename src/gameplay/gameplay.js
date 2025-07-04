@@ -403,4 +403,52 @@ export function resetHold() {
     heldP = null;
     canHold = true;
     drawHoldPiece();
+}
+
+// --- NEW Exported Action Functions for Touch Controls ---
+function executeMove(action) {
+    if (gameOver || paused) return;
+    action();
+}
+
+export function movePieceLeft() {
+    executeMove(() => p.moveLeft());
+}
+
+export function movePieceRight() {
+    executeMove(() => p.moveRight());
+}
+
+export function movePieceDown() {
+    executeMove(() => p.moveDown());
+}
+
+export function rotatePiece() {
+    executeMove(() => p.rotate());
+}
+
+export function hardDropPiece() {
+    executeMove(() => {
+        while (!p.collision(0, 1, p.activeTetromino)) {
+            p.y++;
+        }
+        p.lock();
+    });
+}
+
+export function holdPiece() {
+    executeMove(() => {
+        if (canHold) {
+            if (heldP) {
+                [p, heldP] = [heldP, p];
+                p.x = 3;
+                p.y = -2;
+            } else {
+                heldP = p;
+                randomPiece();
+            }
+            canHold = false;
+            drawHoldPiece();
+        }
+    });
 } 

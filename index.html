@@ -16,6 +16,19 @@
     <div id="game-container" style="display: none;">
         <div id="showtime-overlay">
             <div id="showtime-text">SHOWTIME!</div>
+            <!-- 쇼타임 전용 모바일 터치 컨트롤러 -->
+            <div id="showtime-mobile-controls">
+                <button id="showtime-ctrl-zoom" class="showtime-ctrl-btn">⛶</button>
+                <div class="showtime-dpad">
+                    <button id="showtime-ctrl-up" class="showtime-ctrl-btn">▲</button>
+                    <div>
+                        <button id="showtime-ctrl-left" class="showtime-ctrl-btn">◀</button>
+                        <button id="showtime-ctrl-right" class="showtime-ctrl-btn">▶</button>
+                    </div>
+                    <button id="showtime-ctrl-down" class="showtime-ctrl-btn">▼</button>
+                </div>
+                <button id="showtime-ctrl-next" class="showtime-ctrl-btn">↵</button>
+            </div>
         </div>
         <div id="hold-piece-container">
             <h3>홀드</h3>
@@ -24,6 +37,21 @@
         <div id="game-board-container">
             <div id="game-background"></div>
             <canvas id="game-board" width="400" height="800"></canvas>
+            <!-- 모바일 터치 컨트롤러 -->
+            <div id="mobile-controls">
+                <div class="mobile-controls-group">
+                    <button id="ctrl-left" class="ctrl-btn">◀</button>
+                    <button id="ctrl-right" class="ctrl-btn">▶</button>
+                </div>
+                <div class="mobile-controls-group">
+                    <button id="ctrl-rotate" class="ctrl-btn">↷</button>
+                    <button id="ctrl-down" class="ctrl-btn">▼</button>
+                </div>
+                <div class="mobile-controls-group">
+                    <button id="ctrl-hold" class="ctrl-btn">HOLD</button>
+                    <button id="ctrl-drop" class="ctrl-btn">DROP</button>
+                </div>
+            </div>
         </div>
         <div id="right-panel">
             <div id="next-piece-container">
