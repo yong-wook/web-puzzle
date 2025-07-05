@@ -21,6 +21,7 @@ const pauseMessage = document.getElementById('pause-message');
 // --- 게임 상태 변수 ---
 let selectedMajorStage;
 let currentMinorStage;
+let timerInterval; // 타이머 인터벌을 저장할 변수
 
 // --- 함수 정의 ---
 
@@ -103,7 +104,33 @@ function startGame() {
     // 선택한 스테이지의 첫 번째 레벨을 로드합니다.
     if (loadStage(selectedMajorStage, currentMinorStage)) {
         startGameLoop(); // 게임 루프를 시작합니다.
+        startTimer(); // 타이머를 시작합니다.
     }
+}
+
+/**
+ * 게임 타이머를 시작하고 매초마다 업데이트합니다.
+ */
+function startTimer() {
+    // 이전 타이머가 있다면 중지
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+
+    const timerDisplay = document.getElementById('timer-display');
+    let timeLeft = parseInt(timerDisplay.textContent, 10);
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            // TODO: 시간이 다 되었을 때 게임 오버 처리
+            stopGameLoop();
+            gameOverScreen.style.display = 'flex';
+        }
+    }, 1000);
 }
 
 /**
@@ -113,6 +140,7 @@ function onStageClear() {
     // 게임 루프를 멈추고 'Showtime'을 시작합니다.
     // 쇼타임이 끝나면 advanceToNextStage 함수가 호출됩니다.
     stopGameLoop();
+    clearInterval(timerInterval); // 타이머 중지
     startShowtime(advanceToNextStage);
 }
 
@@ -131,6 +159,7 @@ function advanceToNextStage() {
         if (loadStage(selectedMajorStage, currentMinorStage)) {
             resumeGame(); // Resume gameplay controls
             startGameLoop();
+            startTimer(); // 다음 스테이지 타이머 시작
         }
     }
 }

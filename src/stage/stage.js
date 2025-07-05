@@ -23,8 +23,7 @@ export const LEVELS = [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            ["red", "red", VACANT, "blue", "blue", VACANT, "green", "green", "red", "blue"], 
+            ["red", "red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, VACANT], 
             ["red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red"],
         ]
     },
@@ -71,7 +70,6 @@ export const LEVELS = [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             ["red", "red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, VACANT],
             ["red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red"],
             [VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red", VACANT],
@@ -79,33 +77,6 @@ export const LEVELS = [
             ["purple", VACANT, "orange", "orange", VACANT, "cyan", "cyan", VACANT, "purple", "purple"]
         ]
     },
-    {
-        linesToClear: 3,
-        timeLimit: 60,
-        initialBoard: [
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
-            ["red", "red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, VACANT],
-            ["red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red"],
-            [VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red", VACANT],
-            ["purple", "purple", VACANT, "orange", "orange", VACANT, "cyan", "cyan", VACANT, VACANT],
-            ["purple", VACANT, "orange", "orange", VACANT, "cyan", "cyan", VACANT, "purple", "purple"],
-            ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, VACANT]
-        ]
-    },
-   
     {
         linesToClear: 3,
         timeLimit: 60,
@@ -157,7 +128,7 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 3,
+        linesToClear: 4,
         timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -183,7 +154,7 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 3,
+        linesToClear: 5,
         timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -208,7 +179,7 @@ export const LEVELS = [
             ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, VACANT]
         ]
     },
-    
+    // Stage 4 levels
     {
         linesToClear: 3,
         timeLimit: 60,
@@ -322,7 +293,7 @@ function createEmptyInitialBoard() {
 }
 
 export function loadStage(majorStage, minorStage) {
-    const levelIndex = (majorStage - 1) * 4 + (minorStage - 1);
+    const levelIndex = (minorStage - 1);
 
     if (levelIndex >= LEVELS.length) {
         console.log("All stages cleared!");
