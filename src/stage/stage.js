@@ -4,7 +4,7 @@ import * as gameplay from '../gameplay/gameplay.js';
 export const LEVELS = [
     // Stage 1 levels
     {
-        linesToClear: 1,
+        linesToClear: 3,
         timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -29,8 +29,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 90,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -54,8 +54,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 75,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -80,8 +80,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 70,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -105,9 +105,9 @@ export const LEVELS = [
             ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, VACANT]
         ]
     },
-    // Stage 2 levels
+   
     {
-        linesToClear: 1,
+        linesToClear: 3,
         timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -132,8 +132,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 90,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -157,8 +157,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 75,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -183,8 +183,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 70,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -208,9 +208,9 @@ export const LEVELS = [
             ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, VACANT]
         ]
     },
-    // Stage 3 levels
+    
     {
-        linesToClear: 1,
+        linesToClear: 3,
         timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -235,8 +235,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 90,
+        linesToClear: 3,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -260,8 +260,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 75,
+        linesToClear: 4,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
@@ -286,8 +286,8 @@ export const LEVELS = [
         ]
     },
     {
-        linesToClear: 1,
-        timeLimit: 70,
+        linesToClear: 5,
+        timeLimit: 60,
         initialBoard: [
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
             [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
