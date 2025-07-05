@@ -149,18 +149,22 @@ function onStageClear() {
  */
 function advanceToNextStage() {
     currentMinorStage++;
-    
-    if (currentMinorStage > 12) {
-        // 현재 Major Stage의 모든 마이너 스테이지를 클리어한 경우
-        alert(`Stage ${selectedMajorStage} 클리어!`);
-        setupStageSelection(); // 스테이지 선택 화면으로 돌아갑니다.
-    } else {
+
+    if (currentMinorStage <= 12) {
         // 다음 마이너 스테이지 로드하고 게임 다시 시작
         if (loadStage(selectedMajorStage, currentMinorStage)) {
-            resumeGame(); // Resume gameplay controls
+            resumeGame();
             startGameLoop();
-            startTimer(); // 다음 스테이지 타이머 시작
+            startTimer();
+        } else {
+            // 이 경우는 발생하면 안 되지만, 만약을 대비한 방어 코드
+            console.error("Failed to load the next stage, but it should have been available.");
+            setupStageSelection();
         }
+    } else {
+        // 현재 Major Stage의 모든 마이너 스테이지(12까지)를 클리어한 경우
+        alert(`Stage ${selectedMajorStage} 클리어!`);
+        setupStageSelection(); // 스테이지 선택 화면으로 돌아갑니다.
     }
 }
 

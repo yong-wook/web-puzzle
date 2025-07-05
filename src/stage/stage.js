@@ -2,7 +2,7 @@ import { ROW, COL, VACANT, COLORS } from '../common/constants.js';
 import * as gameplay from '../gameplay/gameplay.js';
 
 export const LEVELS = [
-    // Stage 1 levels
+    // Game Levels
     {
         linesToClear: 3,
         timeLimit: 60,
@@ -282,6 +282,32 @@ export const LEVELS = [
             ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, VACANT]
         ]
     },
+    {
+        linesToClear: 6,
+        timeLimit: 50,
+        initialBoard: [
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            [VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT, VACANT],
+            ["cyan", "cyan", VACANT, "yellow", "yellow", VACANT, "purple", "purple", VACANT, "red"],
+            ["cyan", VACANT, "yellow", "yellow", VACANT, "purple", "purple", VACANT, "red", "red"],
+            ["red", "red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, VACANT],
+            ["red", VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red"],
+            [VACANT, "blue", "blue", VACANT, "green", "green", VACANT, "red", "red", VACANT],
+            ["purple", "purple", VACANT, "orange", "orange", VACANT, "cyan", "cyan", VACANT, VACANT],
+            ["purple", VACANT, "orange", "orange", VACANT, "cyan", "cyan", VACANT, "purple", "purple"],
+            ["yellow", "yellow", VACANT, "red", "red", VACANT, "blue", "blue", VACANT, "VACANT"]
+        ]
+    }
 ];
 
 function createEmptyInitialBoard() {

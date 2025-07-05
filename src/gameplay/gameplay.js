@@ -272,34 +272,30 @@ function drawHoldPiece() {
 }
 
 function CONTROL(event) {
+    if (event.keyCode === 80) { // 'P' for pause
+        if (paused) {
+            resumeGame();
+        } else {
+            pauseGame();
+        }
+        return;
+    }
+
+    if (event.keyCode === 107) { // Numpad + for cheat
+        if (onStageClearCallback) {
+            onStageClearCallback();
+        }
+        return;
+    }
+
     if (gameOver || paused) return;
 
-    let moved = true; // Assume a move happens to trigger a redraw for most keys
-    if (event.keyCode === 37) p.moveLeft();
-    else if (event.keyCode === 38) p.rotate();
-    else if (event.keyCode === 39) p.moveRight();
-    else if (event.keyCode === 40) p.moveDown();
-    else if (event.keyCode === 32) { // Hard Drop
-        while(!p.collision(0, 1, p.activeTetromino)) {
-            p.y++;
-        }
-        p.lock();
-    } else if (event.keyCode === 67) { // Hold
-        if (canHold) {
-            if (heldP) {
-                [p, heldP] = [heldP, p];
-                p.x = 3;
-                p.y = -2;
-            } else {
-                heldP = p;
-                randomPiece();
-            }
-            canHold = false;
-            drawHoldPiece();
-        }
-    } else {
-        moved = false;
-    }
+    if (event.keyCode === 37) movePieceLeft();
+    else if (event.keyCode === 39) movePieceRight();
+    else if (event.keyCode === 40) movePieceDown();
+    else if (event.keyCode === 38) rotatePiece();
+    else if (event.keyCode === 32) hardDropPiece();
+    else if (event.keyCode === 67) holdPiece(); // 'C' for hold
 }
 
 function drawEverything() {
