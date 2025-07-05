@@ -40,6 +40,7 @@ function panBackground(dx, dy) {
 function proceedToNext() {
     document.removeEventListener('keydown', handleShowtimeKeys);
     showtimeOverlay.style.display = 'none';
+    gameBackground.classList.remove('showtime');
     
     backgroundZoom = 1;
     backgroundPosX = 0;

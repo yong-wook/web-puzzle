@@ -99,7 +99,6 @@ h1 {
     background-position: center;
     filter: blur(5px);
     transform-origin: center center;
-    transition: filter 0.5s ease-in-out, transform 0.1s linear;
     z-index: 1;
 }
 
